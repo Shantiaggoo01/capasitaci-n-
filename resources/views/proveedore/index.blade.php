@@ -96,14 +96,12 @@ Proveedores
                                         <form action="{{ route('provider.updateStatus',$proveedore->id) }}" method="post">
                                             @csrf
                                             @method('post')
-                                           
-                                            <button type="submit" class="btn btn-sm btn-  mr-2-{{ $proveedore->estado ? 'danger' : 'success' }}">
+                                            <button type="submit" class="btn btn-sm btn-{{ $proveedore->estado ? 'danger' : 'success' }}">
                                                 {{ $proveedore->estado ? 'Desactivar' : 'Activar' }}
-                                            </button>
-                                           
-
-
-                                        </form>
+                                            </button> 
+                                               
+                    
+                                        </form>  
                                     </td>
                                     @endcan
 

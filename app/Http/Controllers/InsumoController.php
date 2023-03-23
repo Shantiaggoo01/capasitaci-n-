@@ -56,7 +56,7 @@ class InsumoController extends Controller
     {
         $request->validate([
             
-            'Nombre' => ['required', 'regex:/^[\pL\s]+$/u'],
+            'Nombre' => 'required|unique:insumos|regex:/^[\pL\s]+$/u',
             'TipoCantidad' => 'required|string',
             'Precio' => 'required|numeric',
             'Medida' => 'required|numeric',
@@ -108,11 +108,22 @@ class InsumoController extends Controller
      * @param  Insumo $insumo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Insumo $insumo)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            
+            'Nombre' => 'required||regex:/^[\pL\s]+$/u|unique:insumos,Nombre,'. $id,
+            'TipoCantidad' => 'required|string',
+            'Precio' => 'required|numeric',
+            'Medida' => 'required|numeric',
+        ]);
         request()->validate(Insumo::$rules);
+        
 
-        $insumo->update($request->all());
+        $input = $request->all();
+        $insumo = Insumo::find($id);
+        $insumo->update($input);
+        
 
         return redirect()->route('insumos.index')
             ->with('success', 'Insumo actualizado correctamente');

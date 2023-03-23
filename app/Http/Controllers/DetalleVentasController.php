@@ -59,6 +59,8 @@ class DetalleVentasController extends Controller
             ->where("detalle_ventas.idVenta", $id )
             ->get();
         }
+
+
         
         return view('detalle_ventas.show', compact('venta', 'productos','ventas'));
     }
