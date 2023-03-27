@@ -90,44 +90,70 @@ Compra_insumos
                 </div>
 
 
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="example" class="table table-striped table-hover">
-                            <thead class="thead">
-                                <tr>
-                                    <th>ID</th>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5>Total de compras por fecha</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('compra_insumos.index') }}" method="GET">
+                            <div class="form-group">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" value="{{ old('fecha') }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                            @if(request()->has('fecha'))
+                            <a href="{{ route('compra_insumos.index') }}" class="btn btn-secondary">Mostrar todo</a>
+                            @endif
+                        </form>
 
-                                    <th>#Factura</th>
-                                    <th>Proveedor</th>
-                                    <th>Fecha de compra </th>
-                                    <th>$Total Compra</th>
-
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($compras as $comp)
-                                <tr>
-                                    <td>{{ $comp->id }}</td>
-                                    <td>{{ $comp->nFactura }}</td>
-                                    <td>{{ $comp->nombreProveedor }}</td>
-                                    <td>{{ $comp->FechaCompra }}</td>
-                                    <td>{{ $comp->Total }}</td>
-
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="compra_insumos/show?id={{$comp->id}}">Detalles</a>
-                                    </td>
-
-                                </tr>
-
-                                @endforeach
-                            </tbody>
-                        </table>
+                        @if ($totalComprasFecha)
+                        <div class="mt-3">
+                            <h5>Total de compras para la fecha seleccionada: ${{ $totalComprasFecha }}</h5>
+                        </div>
+                        @else
+                        <div class="mt-3">
+                            <h5>No se encontraron compras para la fecha seleccionada</h5>
+                        </div>
+                        @endif
                     </div>
                 </div>
 
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5>Compras</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="table table-striped table-hover">
+                                <thead class="thead">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>#Factura</th>
+                                        <th>Proveedor</th>
+                                        <th>Fecha de compra </th>
+                                        <th>$Total Compra</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($compras as $comp)
+                                    <tr>
+                                        <td>{{ $comp->id }}</td>
+                                        <td>{{ $comp->nFactura }}</td>
+                                        <td>{{ $comp->nombreProveedor }}</td>
+                                        <td>{{ $comp->FechaCompra }}</td>
+                                        <td>{{ $comp->Total }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" href="compra_insumos/show?id={{$comp->id}}">Detalles</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

@@ -21,23 +21,33 @@ class CompraInsumoController extends Controller
         $this->middleware('permission:ver-compras')->only('index');
     }
 
-    public function index()
-    {
-        $compraInsumos = CompraInsumo::paginate();
+    public function index(Request $request)
+{
+    $compraInsumos = CompraInsumo::paginate();
 
-        //$compras = Compra::all();
+    $compras = Compra::select("compras.*", "proveedores.nombre as nombreProveedor")
+        ->join("proveedores", "proveedores.id", "=", "compras.id_proveedor")
+        ->get();
 
+    $insumos = Insumo::all();
+    $proveedores = Proveedore::all();
+
+    $fecha = $request->input('fecha');
+    if ($fecha) {
+        $fecha = date('Y-m-d', strtotime($fecha));
         $compras = Compra::select("compras.*", "proveedores.nombre as nombreProveedor")
             ->join("proveedores", "proveedores.id", "=", "compras.id_proveedor")
+            ->whereDate('FechaCompra', $fecha)
             ->get();
-
-
-        $insumos = Insumo::all();
-        $proveedores = Proveedore::all();
-
-        return view('compra_insumos.index', compact('compraInsumos', 'compras', 'insumos', 'proveedores'))
-            ->with('i', (request()->input('page', 1) - 1) * $compraInsumos->perPage());
+        $totalComprasFecha = Compra::whereDate('FechaCompra', $fecha)->sum('Total');
+    } else {
+        $totalComprasFecha = 0;
     }
+
+    return view('compra_insumos.index', compact('compraInsumos', 'compras', 'insumos', 'proveedores', 'totalComprasFecha'))
+        ->with('i', (request()->input('page', 1) - 1) * $compraInsumos->perPage());
+}
+    
 
     /**
      * Show the form for creating a new resource.

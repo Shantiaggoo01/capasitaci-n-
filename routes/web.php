@@ -57,8 +57,19 @@ Route::post('/usuarios/{id}/activar', 'App\Http\Controllers\UsuarioController@ac
 Route::post('/usuarios/{id}/desactivar', 'App\Http\Controllers\UsuarioController@desactivar')->name('usuarios.desactivar');
 Route::get('/roles/{id}/permissions', [RolController::class, 'showPermissions'])->name('roles.showPermissions');
 
+Route::get('/ayuda', 'App\Http\Controllers\AyudaController@index')->name('ayuda.index');
 
 
+Route::get('/descargar-manual', function () {
+    $archivo = public_path('ayudas/manual_instalacion.pdf');
+    return response()->download($archivo);
+})->name('ayuda.descargar');
+
+
+Route::get('/descargar-instalacion', function () {
+    $archivo = public_path('ayudas/ManualdeUsuarioTRYP(Final).pdf');
+    return response()->download($archivo);
+})->name('ayuda.descargar-instalacion');
 
 
 

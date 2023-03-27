@@ -145,7 +145,7 @@
                 </a>
                 <div id="collapseReportes" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="reporte_venta.html">Vídeos informativos</a>
+                        <a class="collapse-item" href="{{route('ayuda.index')}}">Seccion de Ayudas </a>
                     </div>
                 </div>
             </li>
@@ -185,7 +185,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }} {{ Auth::user()->apellido }}</span>
-                                <img class="img-profile rounded-circle" src="{{ asset('images/' . Auth::user()->image) }}">
+                                <img class="img-profile rounded-circle" src="{{ asset('images/' . (Auth::user()->image ? Auth::user()->image : 'imgDefauld.jpg')) }}">
 
 
 

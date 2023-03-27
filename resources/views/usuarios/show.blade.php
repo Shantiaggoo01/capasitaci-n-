@@ -43,7 +43,7 @@ Usuario
             <div class="card mb-5">
 
 
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{ asset('images/' . $user->image) }}" alt="{{ $user->name }}" width="180" height="160">
+                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{ asset('images/' . (Auth::user()->image ? Auth::user()->image : 'imgDefauld.jpg')) }}" width="180" height="160">
 
                     <h3 class="title mt-3"><b> {{ $user->name}} {{ $user->apellido }}</b></h3>
                     <hr>
