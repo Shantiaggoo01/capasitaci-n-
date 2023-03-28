@@ -10,8 +10,8 @@
                     <h3  class="d-flex justify-content-center" >Descargar manuales</h3>
                     <div class="d-flex justify-content-center"> <!-- agregado -->
                         <div class="btn-group" role="group">
-                            <a href="{{ route('ayuda.descargar', ['archivo' => 'manual_instalacion.pdf']) }}" class="btn btn-primary mx-2"><i class="fa fa-download"></i> Descargar manual de usuario</a>
-                            <a href="{{ route('ayuda.descargar-instalacion', ['archivo' => 'Manualde UsuarioTRYP(Final).pdf']) }}" class="btn btn-primary mx-2"><i class="fa fa-download"></i> Descargar manual de instalación</a>
+                            <a href="{{ route('ayuda.descargar', ['archivo' => 'manual_instalacion.pdf']) }}" class="btn btn-primary mx-2"><i class="fa fa-download"></i>Descargar manual de instalación </a>
+                            <a href="{{ route('ayuda.descargar-instalacion', ['archivo' => 'Manualde UsuarioTRYP(Final).pdf']) }}" class="btn btn-primary mx-2"><i class="fa fa-download"></i>Descargar manual de usuario </a>
                         </div>
                     </div> <!-- agregado -->
                     <hr>
