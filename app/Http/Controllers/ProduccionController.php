@@ -108,6 +108,48 @@ class ProduccionController extends Controller
                                             
                                             $insumo->save();
                                      }
+
+                                     if($insumo && $insumo->Nombre =='sal limon'){
+                                        $total = intval($input['cantidades'][$key] / 150);
+                                        $insumo->cantidadxMedida -= $total * 5000;
+                                        
+                                            $insumo->cantidad -= $total;
+                                        
+                                            
+                                            $insumo->save();
+                                     }
+
+                                     if($insumo && $insumo->Nombre =='sal pimienta'){
+                                        $total = intval($input['cantidades'][$key] / 150);
+                                        $insumo->cantidadxMedida -= $total * 5000;
+                                        
+                                            $insumo->cantidad -= $total;
+                                        
+                                            
+                                            $insumo->save();
+                                     }
+
+                                     if($insumo && $insumo->Nombre =='sal bbq'){
+                                        $total = intval($input['cantidades'][$key] / 150);
+                                        $insumo->cantidadxMedida -= $total * 5000;
+                                        
+                                            $insumo->cantidad -= $total;
+                                        
+                                            
+                                            $insumo->save();
+                                     }
+
+                                     if($insumo && $insumo->Nombre =='sal natural'){
+                                        $total = intval($input['cantidades'][$key] / 150);
+                                        $insumo->cantidadxMedida -= $total * 5000;
+                                        
+                                            $insumo->cantidad -= $total;
+                                        
+                                            
+                                            $insumo->save();
+                                     }
+
+
                                      if ($insumo && $insumo->Nombre == 'papas') {
                                         if ($input['cantidades'][$key] > 150) {
                                             $total = intval($input['cantidades'][$key] / 150);

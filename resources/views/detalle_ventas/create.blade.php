@@ -229,9 +229,9 @@ Crear venta
                             let cantidad = $("#cantidad").val();
                             let precio = $("#precio").val();
 
-                            if (cantidad <= cantidadExistente) {
-                                if (cantidad > 0 && precio > 0) {
-                                    $("#tblproductos").append(`
+        if(cantidad>cantidadExistente){
+            if(cantidad > 0 && precio > 0){
+            $("#tblproductos").append(`
                <tr id="tr-${producto_id}"> 
                     <td>
                         <input type="hidden" name="producto_id[]" value="${producto_id}"/>
