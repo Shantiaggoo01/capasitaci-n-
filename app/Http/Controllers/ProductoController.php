@@ -84,7 +84,7 @@ class ProductoController extends Controller
                 "invima" => $input["invima"],
                 "peso" => $input["peso"],
                 "cantidad" => 0,
-                "precio" => $input["precio"],
+                "precio" => $input["Precio_producto"],
                 //"Total" => $this->calcular_precio($input["id_insumo"], $input["cantidades"])
 
             ]);
@@ -96,10 +96,6 @@ class ProductoController extends Controller
                     "id_producto"=>$producto->id,
                     "cantidad" => $input["cantidades"][$key],
                 ]);
-
-               $ins = Insumo::find($value);
-               $ins-> update(["cantidad"=>$ins->cantidad - $input["cantidades"][$key]]);
-
             }
             
 
@@ -247,7 +243,7 @@ class ProductoController extends Controller
             $producto->invima = $input["invima"];
             $producto->peso = $input["peso"];
             $producto->cantidad = $producto->cantidad;
-            $producto->precio = $input["precio"];
+            $producto->precio = $input["Precio_producto"];
             $producto->save();
     
             // actualizar registros en la tabla producto_insumo

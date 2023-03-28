@@ -72,7 +72,7 @@ Crear Producto
                                                 {{ Form::hidden('cantidad', '0') }}
                                                 <div class="form-group col-6">
                                                     <label for=""><i>Precio</i></label>
-                                                    <input id="precio" type="text" class="form-control" name="precio">
+                                                    <input id="precio" type="text" class="form-control" name="Precio_producto" id="Precio_producto">
                                                 </div>
                                             </div>
                                         </div>
